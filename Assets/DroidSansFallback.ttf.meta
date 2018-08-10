@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 2d14391f39689a44e8bab1df151d0a1b
+timeCreated: 1533794528
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Droid Sans Fallback100c
+  fontNames:
+  - Droid Sans Fallback100c
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
