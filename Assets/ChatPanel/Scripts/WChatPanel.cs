@@ -11,13 +11,8 @@ namespace WCP
     /// <seealso cref="T:UnityEngine.MonoBehaviour" />
     public class WChatPanel : MonoBehaviour
     {
-        public int photoSize;
-        public int width;
-        public int height;
+        public ChatPanelConfigFile configFile;
         public GameObject chatElement;
-        
-        public Sprite iBallon;
-        public Sprite youBallon;
 
         private int m_photoSize = 0;
         private int m_width = 0;
@@ -73,12 +68,12 @@ namespace WCP
 
         private void Update()
         {
-            if (m_width != width || m_height != height || m_photoSize != photoSize)
+            if (m_width != configFile.width || m_height != configFile.height || m_photoSize != configFile.photoSize)
             {
                 // dirty
-                m_width = width;
-                m_height = height;
-                m_photoSize = photoSize;
+                m_width = configFile.width;
+                m_height = configFile.height;
+                m_photoSize = configFile.photoSize;
                 UpdateLayout();
             }
         }

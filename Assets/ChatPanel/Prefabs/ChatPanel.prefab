@@ -449,13 +449,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e1faa2123f14974ca3c123672b3d974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  photoSize: 70
-  width: 400
-  height: 600
+  configFile: {fileID: 11400000, guid: bdb99f7f868c9d940af27872346406a1, type: 2}
   chatElement: {fileID: 1928113313011334, guid: bebdfd25d5f1e704ea773c8e5b47acd8,
     type: 2}
-  iBallon: {fileID: 21300000, guid: 019512613dcc8b14d8467d30daa3d1e2, type: 3}
-  youBallon: {fileID: 21300000, guid: f90012496b9c4bc4ebfc31ea5d31219d, type: 3}
 --- !u!114 &114802929002136144
 MonoBehaviour:
   m_ObjectHideFlags: 1

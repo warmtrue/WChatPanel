@@ -79,7 +79,7 @@ namespace WCP
                 m_horizontalLayoutGroup.childAlignment = TextAnchor.UpperLeft;
                 photo.transform.SetSiblingIndex(0);
                 m_photoImage.color = Color.red;
-                backGround.sprite = chatPanel.youBallon;
+                backGround.sprite = chatPanel.configFile.youBallon;
                 text.rectTransform.anchoredPosition = new Vector2(-14, -10);
             }
             else
@@ -87,7 +87,7 @@ namespace WCP
                 m_horizontalLayoutGroup.childAlignment = TextAnchor.UpperRight;
                 backGround.transform.SetSiblingIndex(0);
                 m_photoImage.color = Color.green;
-                backGround.sprite = chatPanel.iBallon;
+                backGround.sprite = chatPanel.configFile.iBallon;
                 text.rectTransform.anchoredPosition = new Vector2(-25, -10);
             }
 
