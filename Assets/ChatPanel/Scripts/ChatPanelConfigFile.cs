@@ -8,4 +8,5 @@ public class ChatPanelConfigFile : ScriptableObject
     public int scrollBarWidth;
     public Sprite iBallon;
     public Sprite youBallon;
+    public float animateTime;
 }

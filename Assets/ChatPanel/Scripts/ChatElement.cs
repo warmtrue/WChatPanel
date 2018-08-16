@@ -14,12 +14,22 @@ namespace WCP
         private LayoutElement m_layoutElement = null;
         private int m_textWidth = 0;
         private int m_photoSize = 0;
+        private float m_bornTime = 0;
+        private ChatPanelConfigFile m_configFile = null;
 
-        void ScrollCellContent(object info)
+        private void ScrollCellContent(object info)
         {
-            ChatElementInfo chatElementInfo = (ChatElementInfo)info;
-            m_textWidth = chatElementInfo.width;
-            m_photoSize = chatElementInfo.photoSize;
+            ChatElementInfo chatElementInfo = (ChatElementInfo) info;
+            m_configFile = chatElementInfo.configFile;
+            if (m_configFile == null)
+            {
+                Debug.LogError("Null Config File");
+                return;
+            }
+
+            m_textWidth = m_configFile.width;
+            m_photoSize = m_configFile.photoSize;
+            m_bornTime = chatElementInfo.bornTime;
 
             text.text = chatElementInfo.text;
             if (chatElementInfo.left)
@@ -27,7 +37,7 @@ namespace WCP
                 m_horizontalLayoutGroup.childAlignment = TextAnchor.UpperLeft;
                 photo.transform.SetSiblingIndex(0);
                 m_photoImage.color = Color.red;
-                backGround.sprite = chatElementInfo.bgSprite;
+                backGround.sprite = m_configFile.youBallon;
                 text.rectTransform.anchoredPosition = new Vector2(-14, -10);
             }
             else
@@ -35,7 +45,7 @@ namespace WCP
                 m_horizontalLayoutGroup.childAlignment = TextAnchor.UpperRight;
                 backGround.transform.SetSiblingIndex(0);
                 m_photoImage.color = Color.green;
-                backGround.sprite = chatElementInfo.bgSprite;
+                backGround.sprite = m_configFile.iBallon;
                 text.rectTransform.anchoredPosition = new Vector2(-25, -10);
             }
 
@@ -47,6 +57,25 @@ namespace WCP
             m_horizontalLayoutGroup = GetComponent<HorizontalLayoutGroup>();
             m_photoImage = photo.GetComponent<Image>();
             m_layoutElement = GetComponent<LayoutElement>();
+        }
+
+        private static Color m_sTempColor = Color.white;
+
+        private static Color ColorWithAlpha(Color color, float alpha)
+        {
+            m_sTempColor = color;
+            m_sTempColor.a = alpha;
+            return m_sTempColor;
+        }
+
+        private void Update()
+        {
+            if (m_configFile == null || m_configFile.animateTime == 0)
+                return;
+            float alpha = (Time.time - m_bornTime) / m_configFile.animateTime;
+            alpha = Mathf.Clamp01(alpha);
+            text.color = ColorWithAlpha(text.color, alpha);
+            backGround.color = ColorWithAlpha(backGround.color, alpha);
         }
 
         public void UpdateSize(int textWidth, int photoSize)
@@ -71,7 +100,7 @@ namespace WCP
             return width;
         }
 
-        [ContextMenu("debug update size")]
+        [ContextMenu("update size")]
         private void UpdateLayout()
         {
             float textWidth = m_textWidth * 0.5f - 30;
@@ -94,6 +123,6 @@ namespace WCP
 
             m_layoutElement.preferredWidth = m_textWidth;
             m_layoutElement.preferredHeight = elementHeight;
-        }        
+        }
     }
 }

@@ -9,9 +9,8 @@ namespace WCP
     {
         public bool left;
         public string text;
-        public int width;
-        public int photoSize;
-        public Sprite bgSprite;
+        public float bornTime;
+        public ChatPanelConfigFile configFile;
     }
 
     /// <summary>
@@ -62,11 +61,6 @@ namespace WCP
             m_scrollRectTransform.sizeDelta = new Vector2(m_width, m_height);
             m_scrollBarRectTransform.sizeDelta = new Vector2(m_scrollBarWidth, m_height);
             m_scrollBarRectTransform.anchoredPosition = new Vector2(m_width * 0.5f + m_scrollBarWidth * 0.5f, 0);
-            for (int i = 0; i < m_chatElementInfoList.Count; i++)
-            {
-                m_chatElementInfoList[i].width = m_width;
-                m_chatElementInfoList[i].photoSize = m_photoSize;
-            }
 
             for (int i = 0; i < m_scrollRect.content.childCount; i++)
             {
@@ -91,9 +85,8 @@ namespace WCP
             {
                 left = isLeft,
                 text = info,
-                width = m_width,
-                photoSize = m_photoSize,
-                bgSprite = isLeft ? configFile.youBallon : configFile.iBallon
+                bornTime = Time.time,
+                configFile = this.configFile
             });
         }
 
@@ -103,9 +96,8 @@ namespace WCP
             {
                 left = isLeft,
                 text = info,
-                width = m_width,
-                photoSize = m_photoSize,
-                bgSprite = isLeft ? configFile.youBallon : configFile.iBallon
+                bornTime = Time.time,
+                configFile = this.configFile
             });
 
             Rebuild();
