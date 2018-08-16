@@ -1,7 +1,2 @@
-simple ioc
 chat text animation
-optimized performance
 json support
-object pool
-debug inspector
-config file

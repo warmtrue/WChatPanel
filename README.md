@@ -14,6 +14,8 @@ WChatPanel，a chat panel UI component for Unity3D such as wechat.
 * Easy Config
 * Dynamic Update
 
+use [LoopScrollRect](https://github.com/qiankanglai/LoopScrollRect)
+
 
 ## Requirement
 * Unity 2017.3.1
