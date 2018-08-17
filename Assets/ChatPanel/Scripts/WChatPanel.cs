@@ -10,6 +10,7 @@ namespace WCP
         public bool left;
         public string text;
         public float bornTime;
+        public int photoId;
         public ChatPanelConfigFile configFile;
     }
 
@@ -30,6 +31,7 @@ namespace WCP
         private LoopVerticalScrollRect m_scrollRect = null;
         private RectTransform m_scrollRectTransform = null;
         private RectTransform m_scrollBarRectTransform = null;
+        private Image m_backgroundImage = null;
 
         private readonly List<ChatElementInfo> m_chatElementInfoList = new List<ChatElementInfo>();
 
@@ -39,6 +41,9 @@ namespace WCP
             Assert.IsNotNull(m_scrollRect);
             m_scrollRectTransform = m_scrollRect.gameObject.GetComponent<RectTransform>();
             Assert.IsNotNull(m_scrollRectTransform);
+            m_backgroundImage = m_scrollRect.gameObject.GetComponent<Image>();
+            Assert.IsNotNull(m_backgroundImage);
+
             m_scrollRect.prefabSource.prefabName = chatElementName;
             m_scrollBarRectTransform = m_scrollRect.verticalScrollbar.gameObject.GetComponent<RectTransform>();
             Assert.IsNotNull(m_scrollBarRectTransform);
@@ -47,6 +52,7 @@ namespace WCP
             m_height = configFile.height;
             m_photoSize = configFile.photoSize;
             m_scrollBarWidth = configFile.scrollBarWidth;
+            m_backgroundImage.color = configFile.backgroundColor;
             UpdateLayout();
         }
 
@@ -76,27 +82,29 @@ namespace WCP
             m_scrollRect.RefillCells();
 
             // scroll to bottom
-            m_scrollRect.verticalNormalizedPosition = 0;
+            m_scrollRect.RefillCellsFromEnd();
         }
 
-        public void AddChat(bool isLeft, string info)
+        public void AddChat(bool isLeft, string info, int photoId = -1)
         {
             m_chatElementInfoList.Add(new ChatElementInfo()
             {
                 left = isLeft,
                 text = info,
                 bornTime = Time.time,
+                photoId = photoId,
                 configFile = this.configFile
             });
         }
 
-        public void AddChatAndUpdate(bool isLeft, string info)
+        public void AddChatAndUpdate(bool isLeft, string info, int photoId = -1)
         {
             m_chatElementInfoList.Add(new ChatElementInfo()
             {
                 left = isLeft,
                 text = info,
                 bornTime = Time.time,
+                photoId = photoId,
                 configFile = this.configFile
             });
 

@@ -17,6 +17,13 @@ namespace WCP
         private float m_bornTime = 0;
         private ChatPanelConfigFile m_configFile = null;
 
+        private void Awake()
+        {
+            m_horizontalLayoutGroup = GetComponent<HorizontalLayoutGroup>();
+            m_photoImage = photo.GetComponent<Image>();
+            m_layoutElement = GetComponent<LayoutElement>();
+        }
+
         private void ScrollCellContent(object info)
         {
             ChatElementInfo chatElementInfo = (ChatElementInfo) info;
@@ -25,6 +32,18 @@ namespace WCP
             {
                 Debug.LogError("Null Config File");
                 return;
+            }
+
+            int photoId = chatElementInfo.photoId;
+            if (photoId >= 0 && photoId < m_configFile.photoSpriteList.Count)
+            {
+                m_photoImage.sprite = m_configFile.photoSpriteList[photoId];
+                m_photoImage.color = Color.white;
+            }
+            else
+            {
+                m_photoImage.sprite = null;
+                m_photoImage.color = chatElementInfo.left ? Color.red : Color.green;
             }
 
             m_textWidth = m_configFile.width;
@@ -36,7 +55,6 @@ namespace WCP
             {
                 m_horizontalLayoutGroup.childAlignment = TextAnchor.UpperLeft;
                 photo.transform.SetSiblingIndex(0);
-                m_photoImage.color = Color.red;
                 backGround.sprite = m_configFile.youBallon;
                 text.rectTransform.anchoredPosition = new Vector2(-14, -10);
             }
@@ -44,19 +62,11 @@ namespace WCP
             {
                 m_horizontalLayoutGroup.childAlignment = TextAnchor.UpperRight;
                 backGround.transform.SetSiblingIndex(0);
-                m_photoImage.color = Color.green;
                 backGround.sprite = m_configFile.iBallon;
                 text.rectTransform.anchoredPosition = new Vector2(-25, -10);
             }
 
             UpdateLayout();
-        }
-
-        private void Awake()
-        {
-            m_horizontalLayoutGroup = GetComponent<HorizontalLayoutGroup>();
-            m_photoImage = photo.GetComponent<Image>();
-            m_layoutElement = GetComponent<LayoutElement>();
         }
 
         private static Color m_sTempColor = Color.white;

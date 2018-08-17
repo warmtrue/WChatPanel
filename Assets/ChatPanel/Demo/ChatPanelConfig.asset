@@ -11,10 +11,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eae67ca42b0df3f42bb29b2c6938d92a, type: 3}
   m_Name: ChatPanelConfig
   m_EditorClassIdentifier: 
-  photoSize: 66
-  width: 514
-  height: 614
+  photoSize: 56
+  width: 500
+  height: 600
   scrollBarWidth: 17
   iBallon: {fileID: 21300000, guid: 019512613dcc8b14d8467d30daa3d1e2, type: 3}
   youBallon: {fileID: 21300000, guid: f90012496b9c4bc4ebfc31ea5d31219d, type: 3}
   animateTime: 0.8
+  backgroundColor: {r: 0.9019608, g: 0.9019608, b: 0.9019608, a: 1}
+  photoSpriteList:
+  - {fileID: 21300000, guid: d2bed0ccbded13d4d8bf856432b8f50d, type: 3}
+  - {fileID: 21300000, guid: dfba76b9b893baa4e807354ad48c8db4, type: 3}
+  - {fileID: 21300000, guid: f4a70c1967f9c454ba477f59d8e83a98, type: 3}
+  - {fileID: 21300000, guid: 0033531ff5c3cc84c9f3c310917233df, type: 3}
