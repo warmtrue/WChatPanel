@@ -7,7 +7,7 @@ WChatPanel
 
 WChatPanel，a chat panel UI component for Unity3D such as wechat.
 
-![screenshot](http://oi9iyrpv0.bkt.clouddn.com/chatpanel1.gif)
+![screenshot](https://warmtrue-1253180525.cos.ap-beijing.myqcloud.com/chatpanel1.gif)
 
 
 ## Feature
